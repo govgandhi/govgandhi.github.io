@@ -54,3 +54,52 @@ Since the JS and CSS are minified, content changes typically involve:
 - Editing `index.html` directly for text/structure changes
 - Adding/replacing images in `images/` directory
 - The minified `public/` files would need source access to modify significantly
+
+## Editing Content Sections
+
+### Selected Experience (index.html ~line 240)
+Tabbed interface - tabs and content must be added in matching pairs:
+
+1. **Add a tab** in the `.menu` div:
+   ```html
+   <div class="tab_title"><span class="light"></span><span>ORG NAME</span></div>
+   ```
+
+2. **Add matching content** in the `.exp_tab_ul` list (same position as tab):
+   ```html
+   <li class="tab_des_li">
+     <div class="t_content">
+       <h2>Full Organization Name</h2>
+       <h5>Start Date to End Date</h5>
+       <ul class="desc" type="circle">
+         <li>Bullet point</li>
+       </ul>
+     </div>
+   </li>
+   ```
+
+3. **First tab/content** must have `active` class, others should not
+
+### Schools Section (index.html ~line 310)
+Each school uses a `school-behind-title-icon` container:
+
+```html
+<div class="school-behind-title-icon">
+  <div class="school-icon-title-holder">
+    <div class="school-icon-holder">
+      <img class="s_icon1" src="images/resume-numb-X.png" alt="0X" aria-hidden="true" />
+    </div>
+    <div class="school-title-holder">
+      <h3 class="school-title">School Name</h3>
+    </div>
+  </div>
+  <div class="school-text-holder">
+    <h3 class="school-subtitle">Degree, GPA: X.X/X.X</h3>
+    <h3 class="school-dates">Start - End</h3>
+    <p>Description or coursework</p>
+  </div>
+</div>
+```
+
+- Number icons: `images/resume-numb-1.png`, `resume-numb-2.png`, etc.
+- Multiple degrees at same school: add more `school-text-holder` divs with a spacer between
