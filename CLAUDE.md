@@ -115,6 +115,15 @@ The blog is self-contained in the `blog/` folder:
 - **blog/posts.json** - Manifest of all posts (title, date, file, excerpt)
 - **blog/posts/** - Folder containing markdown files
 
+### Publishing from Obsidian
+
+The publish script integrates directly with your Obsidian vault at `/Users/fjb5wj/Documents/Obsidian Vault`.
+
+1. Double-click `Publish to Blog.command`
+2. It shows your 10 most recently modified markdown files
+3. Type a number to select, or `p` for a custom path
+4. Confirm title, add optional excerpt, and publish
+
 ### Publishing a New Blog Post
 
 Use the publish script:
@@ -122,7 +131,7 @@ Use the publish script:
 ./Publish\ to\ Blog.command /path/to/your-post.md
 ```
 
-Or double-click `Publish to Blog.command` and enter the file path when prompted.
+Or double-click `Publish to Blog.command` to browse your Obsidian vault.
 
 The script will:
 1. Copy the markdown file to `blog/posts/`
@@ -144,6 +153,11 @@ The script will:
 ```
 
 Posts are rendered client-side using [marked.js](https://marked.js.org/) with syntax highlighting via highlight.js.
+
+### Deleting a Blog Post
+
+1. Remove the post entry from `blog/posts.json`
+2. Delete the `.md` file from `blog/posts/` (optional but recommended)
 
 ## Mobile Responsive Styles
 
