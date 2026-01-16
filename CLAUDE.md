@@ -22,9 +22,11 @@ Requires the `livereload` npm package to be installed globally.
 
 ### Static Site Structure
 - **index.html** - Single-page application with all content sections
+- **blog/** - Self-contained blog system (index, post template, markdown posts)
 - **public/main.js** - Minified JavaScript (canvas animations, interactions, modals)
 - **public/head.js** - Feature detection script (JS availability, reduced motion, browser detection)
 - **public/styles.css** - Minified CSS (responsive design, 3 breakpoints)
+- **public/mobile-responsive.css** - Custom responsive overrides for mobile/tablet
 - **images/** - Project screenshots, demos (GIFs), and responsive fallback images
 
 ### Key Architectural Notes
@@ -43,10 +45,10 @@ Requires the `livereload` npm package to be installed globally.
 1. Navigation bar (Work, Resume, Blog links)
 2. Hero section with animated canvas backgrounds
 3. Interactive demonstration sections
-4. Experience tabs (CNetS, Centre Marc Bloch, IISER Pune)
-5. Education section (IU Bloomington PhD, IISER Pune)
-6. Work portfolio grid (13+ projects)
-7. Contact section and footer with social links
+4. Experience tabs (UVA, Capital One, U. Barcelona, CNetS, Centre Marc Bloch, IISER Pune)
+5. Education section (UVA, IU Bloomington, IISER Pune)
+6. Work portfolio grid
+7. Contact section and footer with social links (GitHub, LinkedIn, Instagram)
 
 ## Working with This Codebase
 
@@ -103,3 +105,49 @@ Each school uses a `school-behind-title-icon` container:
 
 - Number icons: `images/resume-numb-1.png`, `resume-numb-2.png`, etc.
 - Multiple degrees at same school: add more `school-text-holder` divs with a spacer between
+
+## Blog System
+
+The blog is self-contained in the `blog/` folder:
+
+- **blog/index.html** - Blog index page listing all posts
+- **blog/post.html** - Template that renders markdown posts client-side
+- **blog/posts.json** - Manifest of all posts (title, date, file, excerpt)
+- **blog/posts/** - Folder containing markdown files
+
+### Publishing a New Blog Post
+
+Use the publish script:
+```bash
+./Publish\ to\ Blog.command /path/to/your-post.md
+```
+
+Or double-click `Publish to Blog.command` and enter the file path when prompted.
+
+The script will:
+1. Copy the markdown file to `blog/posts/`
+2. Extract the title from the first `# ` heading
+3. Prompt for an optional excerpt
+4. Update `posts.json` with the new entry
+
+### Manual Post Addition
+
+1. Copy your `.md` file to `blog/posts/`
+2. Add an entry to `blog/posts.json`:
+```json
+{
+  "title": "Post Title",
+  "date": "2026-01-16",
+  "file": "filename.md",
+  "excerpt": "Optional short description"
+}
+```
+
+Posts are rendered client-side using [marked.js](https://marked.js.org/) with syntax highlighting via highlight.js.
+
+## Mobile Responsive Styles
+
+Custom responsive overrides are in `public/mobile-responsive.css`:
+- Loaded after `styles.css` to override fixed dimensions
+- Breakpoints: 1024px (tablet), 768px (mobile), 480px (small mobile)
+- Fixes for photography gallery, experience tabs, schools section
