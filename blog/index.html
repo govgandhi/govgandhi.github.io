@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="blog" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Govind Gandhi</title>
+  <link rel="icon" type="image/png" href="../images/logo.png" sizes="32x32" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../public/styles.css" />
+  <link rel="stylesheet" href="../public/mobile-responsive.css" />
+  <style>
+    /* Blog-specific styles */
+    .blog-container {
+      max-width: 800px;
+      margin: 120px auto 60px;
+      padding: 0 30px;
+    }
+
+    .blog-header {
+      margin-bottom: 60px;
+    }
+
+    .blog-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .blog-header p {
+      color: #888;
+      font-size: 1.1rem;
+    }
+
+    .posts-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .post-item {
+      border-bottom: 1px solid #333;
+      padding: 30px 0;
+    }
+
+    .post-item:last-child {
+      border-bottom: none;
+    }
+
+    .post-date {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .post-title {
+      margin: 0 0 12px;
+    }
+
+    .post-title a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.4rem;
+      transition: color 0.2s;
+    }
+
+    .post-title a:hover {
+      color: #6BD490;
+    }
+
+    .post-excerpt {
+      color: #aaa;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      color: #6BD490;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .no-posts {
+      color: #888;
+      font-style: italic;
+      padding: 40px 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      .blog-container {
+        margin-top: 80px;
+        padding: 0 20px;
+      }
+
+      .blog-header h1 {
+        font-size: 2rem;
+      }
+
+      .post-title a {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body class="blog">
+  <nav class="navigation" role="navigation" aria-label="Global">
+    <a class="navigation__link" href="../index.html">
+      Govind Gandhi
+    </a>
+    <button class="navigation__button" aria-expanded="false" aria-controls="navigation__list">Open Global Menu</button>
+    <ul class="navigation__list" id="navigation__list">
+      <li class="navigation__list__item"><a class="navigation__list__link" href="../index.html#work">Work</a></li>
+      <li class="navigation__list__item"><a class="navigation__list__link" href="../resume.pdf" target="_blank">Resume</a></li>
+      <li class="navigation__list__item"><a class="navigation__list__link" href="index.html">Blog</a></li>
+    </ul>
+  </nav>
+
+  <main class="blog-container">
+    <a href="../index.html" class="back-link">&larr; Back to home</a>
+
+    <header class="blog-header">
+      <h1>Blog</h1>
+      <p>Thoughts on network science, machine learning, and research</p>
+    </header>
+
+    <ul class="posts-list" id="posts-list">
+      <li class="no-posts">Loading posts...</li>
+    </ul>
+  </main>
+
+  <script>
+    // Load posts from posts.json
+    async function loadPosts() {
+      const postsList = document.getElementById('posts-list');
+
+      try {
+        const response = await fetch('posts.json');
+        if (!response.ok) throw new Error('No posts found');
+
+        const posts = await response.json();
+
+        if (posts.length === 0) {
+          postsList.innerHTML = '<li class="no-posts">No posts yet. Check back soon!</li>';
+          return;
+        }
+
+        // Sort by date (newest first)
+        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+        postsList.innerHTML = posts.map(post => `
+          <li class="post-item">
+            <div class="post-date">${formatDate(post.date)}</div>
+            <h2 class="post-title">
+              <a href="post.html?p=${encodeURIComponent(post.file)}">${escapeHtml(post.title)}</a>
+            </h2>
+            ${post.excerpt ? `<p class="post-excerpt">${escapeHtml(post.excerpt)}</p>` : ''}
+          </li>
+        `).join('');
+
+      } catch (error) {
+        postsList.innerHTML = '<li class="no-posts">No posts yet. Check back soon!</li>';
+      }
+    }
+
+    function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>

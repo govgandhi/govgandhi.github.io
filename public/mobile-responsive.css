@@ -1,0 +1,235 @@
+/* Mobile Responsive Overrides
+   This file adds responsive styles for mobile and tablet views
+   Loaded after styles.css to override fixed dimensions */
+
+
+/* Mobile screens */
+@media screen and (max-width: 768px) {
+  /* Photography section - network visualization */
+  .photography {
+    position: relative !important;
+    min-height: 250px !important;
+    background: #000 !important;
+    overflow: hidden !important;
+  }
+
+  .photography--collage {
+    display: none !important;
+  }
+
+  .photography--copy {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 10 !important;
+    text-align: center !important;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.95) !important;
+  }
+
+  #network-canvas {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 1 !important;
+  }
+
+  /* Experience section - improve tab layout */
+  .exp_tabs .grid {
+    display: block !important;
+  }
+
+  .exp_tabs .menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .exp_tabs .tab_title {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .exp_tabs .t_content h2 {
+    font-size: 1.2rem;
+  }
+
+  .exp_tabs .desc li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Schools section - improve spacing */
+  .school_section_wrapper {
+    padding: 20px !important;
+  }
+
+  .school-behind-title-icon {
+    margin-bottom: 30px;
+  }
+
+  .school-title {
+    font-size: 1.1rem !important;
+  }
+
+  .school-subtitle {
+    font-size: 0.95rem !important;
+  }
+
+  .school-text-holder p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Work grid - single column on mobile */
+  .work--grid {
+    display: block !important;
+  }
+
+  .work--item {
+    margin-bottom: 20px;
+  }
+
+  /* Hero section text sizing */
+  .hero h1 {
+    font-size: 2rem !important;
+    padding: 0 20px;
+  }
+
+  /* Contact section */
+  .contact--copy {
+    margin-top: 100px !important;
+    padding: 0 20px;
+  }
+
+  .contact--copy p {
+    font-size: 1.5rem !important;
+  }
+
+  /* Social links - make more tappable */
+  .social-links a {
+    padding: 10px;
+    font-size: 1.2rem;
+  }
+
+  /* Navigation improvements */
+  .navigation__list {
+    padding: 10px;
+  }
+
+  .navigation__list__link {
+    padding: 10px 15px;
+  }
+}
+
+
+/* Travel/Adventures section - cinematic reveal for mobile */
+@media screen and (max-width: 768px) {
+  .travel {
+    position: relative !important;
+    min-height: 70vh !important;
+    overflow: hidden !important;
+    background: #000 !important;
+  }
+
+  .travel::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: url('../images/travel-1x.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    opacity: 1 !important;
+    z-index: 1 !important;
+  }
+
+  .travel--sticky {
+    position: relative !important;
+    min-height: 70vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 2 !important;
+  }
+
+  .travel--copy {
+    text-align: center !important;
+    padding: 0 20px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .travel--copy span,
+  .travel--copy #travel-intro {
+    font-size: 1.3rem !important;
+    color: #fff !important;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.8) !important;
+    display: block !important;
+    text-align: center !important;
+    word-wrap: break-word !important;
+  }
+
+  /* Hide the canvas on mobile - we use image instead */
+  #adventures-mask {
+    display: none !important;
+  }
+
+  .travel--overlay {
+    display: none !important;
+  }
+
+  /* Show the "explorations" text that's normally hidden */
+  .travel .visually-hidden,
+  .travel span.visually-hidden,
+  .travel--copy .visually-hidden,
+  #travel-intro .visually-hidden {
+    position: static !important;
+    clip: unset !important;
+    clip-path: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    display: inline !important;
+    white-space: normal !important;
+    border: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+  }
+}
+
+/* Small mobile screens */
+@media screen and (max-width: 480px) {
+  .photography--collage img {
+    width: 95% !important;
+    max-width: none !important;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem !important;
+  }
+
+  .exp_tabs .tab_title {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .school-title {
+    font-size: 1rem !important;
+  }
+
+  .E-section-title h2,
+  .school--copy h2,
+  .work--copy h2 {
+    font-size: 1.5rem !important;
+  }
+
+}
