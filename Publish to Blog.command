@@ -4,7 +4,7 @@
 # Publishes a markdown file from Obsidian (or anywhere) to the blog
 #
 # Usage:
-#   1. Double-click and enter the file path when prompted
+#   1. Double-click to browse your Obsidian vault
 #   2. Drag a .md file onto this script
 #   3. Run from terminal: ./Publish\ to\ Blog.command /path/to/post.md
 
@@ -13,11 +13,13 @@ cd "$(dirname "$0")"
 BLOG_DIR="blog"
 POSTS_DIR="$BLOG_DIR/posts"
 POSTS_JSON="$BLOG_DIR/posts.json"
+OBSIDIAN_VAULT="/Users/fjb5wj/Documents/Smaug's Lair"
 
 # Colors for output
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 echo ""
@@ -30,10 +32,55 @@ echo ""
 if [ -n "$1" ]; then
     MD_FILE="$1"
 else
-    echo "Enter the path to your markdown file:"
-    echo "(You can drag and drop the file here)"
-    echo ""
-    read -r MD_FILE
+    # Check if Obsidian vault exists
+    if [ -d "$OBSIDIAN_VAULT" ]; then
+        echo -e "${BLUE}Obsidian Vault detected!${NC}"
+        echo ""
+        echo "Recent markdown files:"
+        echo "----------------------------------------"
+
+        # List markdown files sorted by modification time (newest first)
+        # Store in array for selection
+        i=1
+        declare -a FILES
+        while IFS= read -r file; do
+            FILES[$i]="$file"
+            # Get just the filename for display
+            basename_file=$(basename "$file")
+            # Get modification date
+            mod_date=$(stat -f "%Sm" -t "%Y-%m-%d" "$file" 2>/dev/null || date -r "$file" +"%Y-%m-%d" 2>/dev/null)
+            echo -e "  ${GREEN}[$i]${NC} $basename_file ${YELLOW}($mod_date)${NC}"
+            ((i++))
+            if [ $i -gt 10 ]; then
+                break
+            fi
+        done < <(find "$OBSIDIAN_VAULT" -maxdepth 2 -name "*.md" -type f ! -path "*/.obsidian/*" -print0 | xargs -0 ls -t 2>/dev/null)
+
+        echo "----------------------------------------"
+        echo ""
+        echo -e "Enter a number to select, or ${YELLOW}[p]${NC} for custom path:"
+        read -r SELECTION
+
+        if [[ "$SELECTION" =~ ^[0-9]+$ ]] && [ -n "${FILES[$SELECTION]}" ]; then
+            MD_FILE="${FILES[$SELECTION]}"
+        elif [[ "$SELECTION" == "p" ]] || [[ "$SELECTION" == "P" ]]; then
+            echo ""
+            echo "Enter the path to your markdown file:"
+            echo "(You can drag and drop the file here)"
+            read -r MD_FILE
+        else
+            echo -e "${RED}Invalid selection${NC}"
+            echo ""
+            echo "Press any key to exit..."
+            read -n 1
+            exit 1
+        fi
+    else
+        echo "Enter the path to your markdown file:"
+        echo "(You can drag and drop the file here)"
+        echo ""
+        read -r MD_FILE
+    fi
 fi
 
 # Remove quotes if present (from drag and drop)
