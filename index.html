@@ -281,7 +281,7 @@
       <div class="contact--sticky">
         <div class="contact--copy" style="margin-top: 200px;">
           <p tabindex="-1" data-focus="25">and I’d like to<br />collaborate with you.</p>
-          <div class="contact--cta"><a href="mailto:fjb5wj@virginia.edu">Contact me</a></div>
+          <div class="contact--cta"><a href="#" id="contact-email-link">Contact me</a></div>
         </div>
       </div>
     </section>
@@ -850,7 +850,7 @@
 </div>
 <div class="sticky_email">
   <div class="s_email">
-    <a href="mailto:fjb5wj@virginia.edu" class="email_s">fjb5wj@virginia.edu</a>
+    <a href="#" class="email_s" id="sticky-email-link"></a>
   </div>
   <div class="vl"></div>
 </div>
@@ -891,6 +891,26 @@
       $(".exp_tabs ul").height(listItemHeight + "px");
     }
   })(jQuery);
+</script>
+<script>
+  // Email obfuscation - bots can't easily read this
+  (function() {
+    var u = 'fjb5wj';
+    var d = 'virginia.edu';
+    var e = u + '@' + d;
+    var m = 'mailto:' + e;
+
+    var contactLink = document.getElementById('contact-email-link');
+    if (contactLink) {
+      contactLink.href = m;
+    }
+
+    var stickyLink = document.getElementById('sticky-email-link');
+    if (stickyLink) {
+      stickyLink.href = m;
+      stickyLink.textContent = e;
+    }
+  })();
 </script>
 </body>
 

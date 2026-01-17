@@ -1,7 +1,33 @@
-# Robots.txt for govgandhi.github.io
+# Robots.txt for govindgandhi.com
 
 User-agent: *
 Allow: /
+Disallow: /resume.pdf
+
+# Block AI training crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
 
 # Sitemap location
 Sitemap: https://govindgandhi.com/sitemap.xml
