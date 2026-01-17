@@ -10,7 +10,7 @@
 
 cd "$(dirname "$0")"
 
-BLOG_DIR="blog"
+BLOG_DIR="writing"
 POSTS_DIR="$BLOG_DIR/posts"
 POSTS_JSON="$BLOG_DIR/posts.json"
 OBSIDIAN_VAULT="/Users/fjb5wj/Documents/Smaug's Lair"
