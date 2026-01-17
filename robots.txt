@@ -1,0 +1,7 @@
+# Robots.txt for govgandhi.github.io
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://govgandhi.github.io/sitemap.xml
