@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | Govind Gandhi</title>
   <link rel="icon" type="image/png" href="../images/logo.png" sizes="32x32" />
+  <link rel="canonical" id="canonical-link" href="https://govindgandhi.com/writing/post.html" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../public/styles.css" />
   <link rel="stylesheet" href="../public/mobile-responsive.css" />
@@ -235,6 +236,12 @@
       if (!postFile) {
         article.innerHTML = '<div class="error-message">No post specified.</div>';
         return;
+      }
+
+      // Update canonical URL to include the post parameter
+      const canonicalLink = document.getElementById('canonical-link');
+      if (canonicalLink) {
+        canonicalLink.href = `https://govindgandhi.com/writing/post.html?p=${encodeURIComponent(postFile)}`;
       }
 
       try {
