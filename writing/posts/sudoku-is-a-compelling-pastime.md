@@ -34,20 +34,27 @@ Start with the shorter videos at [CrackingTheCryptic ](https://www.youtube.com/@
 #### Fun constructions I've enjoyed:
 [Rising Circles](https://sudokupad.app/7p8BFPqG4M) Too easy but beautiful
 [Siren, Octal, Dumpty ](https://sudokupad.app/fPB7jpgLm8) Wordle in Sudoku!!
+[The Dutch Miracle](https://sudokupad.app/hfpFTGNLrr) - Absolute beauty
 [Flurry](https://sudokupad.app/kivcdm7p7s) of pleasure 
 [178](https://sudokupad.app/JnpBMH8t2h) No numbers
 [Skyscraper](https://sudokupad.app/3M6L2364h2) 
 [Rainbow](https://sudokupad.app/24PFG9bTdn) - Essential coloring practice
-#### Some famous constructors and sources to follow:
-[CrackingTheCryptic ](https://www.youtube.com/@CrackingTheCryptic)
+[Fingers](https://sudokupad.app/1dm8yvq9jt) - 6x6 rated 1/5 but quite clever
+[Rat Run: Primer](https://sudokupad.app/iu50qghplg) - Marty Sears genius' comes up with a new mini game
+
+#### Some famous puzzle constructors and sources to follow:
+
+[CrackingTheCryptic](https://ctc-catalogue.com/ctc-catalogue-930b774/sudoku_puzzles?Constraints__arraycontains=Pathway&Setter__arraycontains=Marty+Sears) catalogue, their [Youtube Channel](https://www.youtube.com/@CrackingTheCryptic)
 [Artisanal Sudoku](https://artisanalsudoku.substack.com/) by James Sinclair (The latest posts are free and have easy, med, hard puzzles every week)
-Useful reddit posts for more puzzles: [A.](https://www.reddit.com/r/sudoku/comments/1nmgils/compilation_of_my_favorite_variant_sudokus/) and [B.](https://www.reddit.com/r/sudoku/comments/1nmgils/compilation_of_my_favorite_variant_sudokus/)
-Aad van de wetering - probably the most famous and prolific
+Useful reddit posts for more puzzles: [Link A](https://www.reddit.com/r/sudoku/comments/1nmgils/compilation_of_my_favorite_variant_sudokus/) and [Link B](https://www.reddit.com/r/sudoku/comments/gutcw0/what_are_the_best_sources_for_handmade_sudoku/)
+Aad van de wetering - probably the most famous, prolific and oldest gun in town
 Marty Sears 
 Phistomefel
 [Nikoli](http://nikoli.co.jp/en/puzzles/) - Japanese repo of puzzles
 [Logic Masters Deutschland](https://logic-masters.de/Raetselportal/?chlang=en) - German repo of puzzles (their 2/5 might be harder than it seems)
+[Putting Green 2](https://sudokupad.app/n13kcw13ck) 
 
+#### What tools to play on?
 
-
-
+Sudokuexchange - You can enter normal sudoku's from your newspaper or from the Times website, so that you can notate better quickly. 
+Sven's Sudokupad
